@@ -47,7 +47,9 @@ app.post("/api/products", (req, res, next) => {
 	const bag = new Bag({
 		name: body.name,
 		price: body.price,
+		characteristics: body.characteristics,
 		category: body.category,
+		measures: body.measures,
 		imageUrl: body.imageUrl,
 	});
 

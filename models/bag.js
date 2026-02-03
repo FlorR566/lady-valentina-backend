@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const bagSchema = new mongoose.Schema({
 	name: String,
 	price: Number,
+	characteristics: String,
 	category: String,
+	measures: String,
 	imageUrl: String,
 });
 
