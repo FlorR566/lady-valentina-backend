@@ -50,7 +50,7 @@ app.post("/api/products", (req, res, next) => {
 		characteristics: body.characteristics,
 		category: body.category,
 		measures: body.measures,
-		imageUrl: body.imageUrl,
+		images: body.images,
 	});
 
 	bag

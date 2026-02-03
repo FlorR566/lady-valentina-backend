@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const bagSchema = new mongoose.Schema({
-	name: String,
-	price: Number,
+	name: { type: String, required: true },
+	price: { type: Number, required: true },
 	characteristics: String,
 	category: String,
 	measures: String,
-	imageUrl: String,
+	images: { type: [String], default: [] },
 });
 
 bagSchema.set("toJSON", {
