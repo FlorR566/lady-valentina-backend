@@ -6,10 +6,28 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const Bag = require("./models/bag");
 
+const allowedOrigins = [
+	"http://localhost:5173", // frontend local (Vite)
+	"https://ladyvalentina.vercel.app", // frontend en Vercel
+];
+
 const app = express();
 
 // MIDDLEWARES INICIALES
-app.use(cors({ origin: "https://ladyvalentina.vercel.app/" }));
+app.use(
+	cors({
+		origin: function (origin, callback) {
+			// Permitir peticiones sin origen (de Postman o apps móviles)
+			if (!origin) return callback(null, true);
+
+			if (allowedOrigins.indexOf(origin) !== -1) {
+				callback(null, true);
+			} else {
+				callback(new Error("No permitido por CORS"));
+			}
+		},
+	}),
+);
 app.use(express.json()); // (¡Obligatorio antes que Morgan!)
 
 // Token 'body'
